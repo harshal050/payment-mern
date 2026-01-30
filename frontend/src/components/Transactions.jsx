@@ -31,7 +31,7 @@ export default function Transactions({ isSignin }) {
       }
     }
     call();
-  }, [])
+  }, [isSignin,navigate])
 
   return (
     <>
@@ -54,7 +54,7 @@ export default function Transactions({ isSignin }) {
                   <td className="py-2">{tx.from}</td>
                   <td className="py-2">{tx.to}</td>
                   <td
-                    className={`py-2 font-semibold ${(tx.from != username) ? "text-green-600" : "text-red-600"
+                    className={`py-2 font-semibold ${(tx.from !== username) ? "text-green-600" : "text-red-600"
                       }`}
                   >
                     ₹ {tx.money}

@@ -61,7 +61,7 @@ export default function RecentTransactions({balance}) {
               {/* Right */}
               <div className="text-right">
                 <p
-                  className={`font-semibold ${tx.from != userName ? "text-green-600" : "text-red-600"
+                  className={`font-semibold ${tx.from !== userName ? "text-green-600" : "text-red-600"
                     }`}
                 >
                   ₹ {Math.abs(tx.money)}

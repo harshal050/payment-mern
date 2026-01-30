@@ -76,7 +76,6 @@ export default function Signin({ setisSignin }) {
         onClose={() => setPopup({ type: null, message: "" })}
       />
 
-
     </div>
   );
 }

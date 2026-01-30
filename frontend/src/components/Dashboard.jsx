@@ -11,13 +11,9 @@ export default function Dashboard({ isSignin, setisSignin }) {
     const [balance, setbalance] = useState();
     const [popup, setPopup] = useState({ type: null, message: "" });
     const navigate = useNavigate();
-
-
+    
+    
     useEffect(() => {
-        if (!isSignin) {
-            navigate('/signin');
-        }
-        
         async function call() {
             try {
                 const res = await fetch('api/user/', {
@@ -34,8 +30,13 @@ export default function Dashboard({ isSignin, setisSignin }) {
                 setPopup({ type: "error", message: "You are blocked for 15 seconds🥳" });
             }
         }
-        call();
-    }, [])
+        
+        if (!isSignin) {
+            navigate('/signin');
+        }else{
+            call();
+        }
+    }, [isSignin,navigate])
 
 
     function logout() {

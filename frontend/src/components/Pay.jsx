@@ -1,22 +1,12 @@
 import { useState, useEffect } from "react";
 import AutoPopup from "./AutoPopup";
-import { useNavigate } from "react-router-dom";
-
-// const users = [
-//   { id: 1, name: "Rahul Sharma", upi: "rahul@upi" },
-//   { id: 2, name: "Priya Patel", upi: "priya@upi" },
-//   { id: 3, name: "Amit Verma", upi: "amit@upi" },
-// ];
-
 
 export default function Pay({balance,setbalance}) {
   const [amount, setAmount] = useState("");
-  const [to, setto] = useState("");
   const [selectedUser, setSelectedUser] = useState(null);
   const [loading, setLoading] = useState(false);
   const [popup, setPopup] = useState({ type: null, message: "" });
   const [users, setusers] = useState([])
-  const navigate = useNavigate();
 
   useEffect(() => {
     async function call() {
