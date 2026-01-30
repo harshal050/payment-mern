@@ -23,6 +23,12 @@ app.use(ipmiddleware);
 app.use('/api/user',userRouter);
 app.use('/api/ip', ipRouter);
 
+app.use((req,res,next)=>{
+    res.status(400).json({
+        message : "404 not found"
+    });
+})
+
 app.listen(PORT,()=>{
     console.log("server is listen on port "+PORT);
 })
