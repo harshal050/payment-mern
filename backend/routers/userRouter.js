@@ -36,7 +36,7 @@ userRouter.post('/signup' , async(req,res)=>{
 userRouter.post('/signin', async(req,res)=>{
     let {username , password} = req.body;
     try{
-        console.log("username "+username)
+        // console.log("username "+username)
         const data = await User.findOne({username , password});
         if(data==null) throw new Error();
         else{
