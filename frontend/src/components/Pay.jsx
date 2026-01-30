@@ -41,7 +41,7 @@ export default function Pay({balance,setbalance}) {
   const handlePay = async () => {
     setLoading(true);
     try {
-      const res = await fetch('api/tranc', {
+      const res = await fetch('api/user/tranc', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
