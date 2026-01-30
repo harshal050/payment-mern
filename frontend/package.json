@@ -14,7 +14,7 @@
     "web-vitals": "^2.1.4",
     "zod": "^4.3.6"
   },
-  "proxy": "https://payment-mern-backend.vercel.app",
+  "proxy": "https://payment-mern-backend.vercel.app/",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
