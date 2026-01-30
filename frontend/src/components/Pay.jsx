@@ -21,7 +21,7 @@ export default function Pay({balance,setbalance}) {
   useEffect(() => {
     async function call() {
       try {
-        const res = await fetch('http://localhost:3001/user/all', {
+        const res = await fetch('api/user/all', {
           method: 'GET',
           headers: {
             'Content-Type': 'application/json',
@@ -41,7 +41,7 @@ export default function Pay({balance,setbalance}) {
   const handlePay = async () => {
     setLoading(true);
     try {
-      const res = await fetch('http://localhost:3001/user/tranc', {
+      const res = await fetch('api/tranc', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

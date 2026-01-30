@@ -20,8 +20,7 @@ export default function Dashboard({ isSignin, setisSignin }) {
         
         async function call() {
             try {
-
-                const res = await fetch('http://localhost:3001/user/', {
+                const res = await fetch('api/user/', {
                     method: 'GET',
                     headers: {
                         'Content-Type': 'application/json',

@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import AutoPopup from "./AutoPopup";
-// import AutoPopup from "./AutoPopup";
 
 // components/Signup.jsx
 export default function Signup() {
@@ -14,7 +13,7 @@ export default function Signup() {
   async function SignupHandler() {
     try {
       setloading(true);
-      const res = await fetch('http://localhost:3001/user/signup', {
+      const res = await fetch('api/user/signup', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'

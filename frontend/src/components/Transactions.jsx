@@ -15,7 +15,7 @@ export default function Transactions({ isSignin }) {
     }
     async function call() {
       try {
-        const res = await fetch('http://localhost:3001/user/tranc/all', {
+        const res = await fetch('api/user/tranc/all', {
           method: 'GET',
           headers: {
             'Content-Type': 'application/json',

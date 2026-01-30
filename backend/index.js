@@ -4,7 +4,7 @@ const {userRouter} = require('./routers/userRouter');
 const {ipRouter} = require('./routers/ipRouter');
 const {ipmiddleware} = require('./middleware/ipmiddleware')
 const cors = require('cors');
-const PORT = 3001;
+const PORT = process.env.PORT || 3001;
 
 if (typeof global.RequestCnt === 'undefined') {
   global.RequestCnt = 0;
@@ -12,14 +12,20 @@ if (typeof global.RequestCnt === 'undefined') {
 
 setInterval(()=>{
     global.RequestCnt=0;
-},3000)
+},1000)
 
-app.use(cors());
+app.use(cors({origin:"*", credentials:true}));
 app.use(express.json());
 
-app.use('/user',userRouter);
-app.use('/ip', ipRouter);
+app.use(ipmiddleware);
 
-app.listen(PORT,()=>{
-    console.log("server is listen on port "+PORT);
-})
+app.use('/api/user',userRouter);
+app.use('/api/ip', ipRouter);
+
+if(process.env.NODE_ENV !== "production"){
+    app.listen(PORT,()=>{
+        console.log("server is listen on port "+PORT);
+    })
+}
+
+module.exports = app;

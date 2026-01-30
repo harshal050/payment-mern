@@ -11,11 +11,12 @@ userRouter.post('/signup' , async(req,res)=>{
     try{
         const data = await User.find({username});
         if(data.length==0) throw new Error();
-        // console.log(data)
-        res.status(500).json({
-            message : "username already exist...",
-            success : false
-        })
+        else{
+            res.status(500).json({
+                message : "username already exist...",
+                success : false
+            })
+        }
     }catch(e){
         try{
             await User.create({username , password});

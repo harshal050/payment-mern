@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import AutoPopup from "./AutoPopup";
-import {User} from "../lib/lib"
 
 // components/Signin.jsx
 export default function Signin({ setisSignin }) {
@@ -13,14 +12,9 @@ export default function Signin({ setisSignin }) {
 
   async function SigninHandler() {
     setloading(true);
-    const validate = User.safeParse({ username, password });
-    if (!(validate.success)) {
-      setPopup({ type: "error", message: "Enter valid email or password"});
-    }else{
-
 
     try {
-      const res = await fetch('http://localhost:3001/user/signin', {
+      const res = await fetch('api/user/signin', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -34,7 +28,7 @@ export default function Signin({ setisSignin }) {
         setPopup({ type: "success", message: data.message });
         localStorage.setItem('Authorization', data.token);
         setisSignin(true);
-        navigate('/');  
+        navigate('/');
       } else {
         setPopup({ type: "error", message: data.message });
       }
@@ -42,7 +36,6 @@ export default function Signin({ setisSignin }) {
       setPopup({ type: "error", message: "You are blocked for 15 seconds🥳" });
     }
   }
-}
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-100">
