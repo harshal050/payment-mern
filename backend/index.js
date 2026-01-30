@@ -5,8 +5,6 @@ const {userRouter} = require('./routers/userRouter');
 const {ipRouter} = require('./routers/ipRouter');
 const {ipmiddleware} = require('./middleware/ipmiddleware')
 const cors = require('cors');
-require('dotenv').config();
-
 const PORT = 3001;
 
 if (typeof global.RequestCnt === 'undefined') {
