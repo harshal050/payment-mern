@@ -89,16 +89,15 @@ userRouter.post('/tranc', usermiddleware , async(req,res)=>{
     const {to,money} = req.body;
     const from = req.username
 
-    const data = await User.find({username:from});
-
-    if(data.balance < money){
-        res.status(200).json({
-            message : "doesn't have sufficient balance!",
-            success : false
-        })
-    }else{
-        const session = await mongoose.startSession();
-        try{
+    try{
+        const data = await User.find({username:from});
+        if(data.balance < money){
+            res.status(200).json({
+                message : "doesn't have sufficient balance!",
+                success : false
+            })
+        }else{
+            const session = await mongoose.startSession();
             await session.withTransaction(async()=>{
                 await User.findOneAndUpdate({username:from},{$inc:{balance : -money}});
                 await User.findOneAndUpdate({username:to},{$inc:{balance : money}});
@@ -108,15 +107,16 @@ userRouter.post('/tranc', usermiddleware , async(req,res)=>{
                 message : "Successfully Tranc...",
                 success : true  
             })
-        }catch(e){
-            res.status(500).json({
-                message : "Transaction failed..",
-                success : false
-            })
-        }finally{
-            session.endSession();
         }
+    }catch(e){
+        res.status(500).json({
+            message : "Transaction failed..",
+            success : false
+        })
+    }finally{
+        session.endSession();
     }
+
 })
 
 userRouter.get('/tranc/all', usermiddleware , async(req,res)=>{
