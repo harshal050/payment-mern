@@ -1,6 +1,6 @@
 
 const mongoose = require('mongoose');
-const url = process.env.MONGOURL;
+const url = "mongodb+srv://harshal_050:Harshal%402772@cluster0.hchtgxj.mongodb.net/payment-mern?retryWrites=true&w=majority";
 
 mongoose.connect(url)
 .then(()=>console.log("mongoose connnected.."))

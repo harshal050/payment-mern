@@ -4,7 +4,7 @@ const {usermiddleware} = require('../middleware/usermiddleware');
 const userRouter = express.Router();
 const {User,Transactions,mongoose} = require('../db/db');
 const jwt = require('jsonwebtoken');
-const jwtsecret = process.env.JWTSECRET;
+const jwtsecret = "jwtsecret";
 
 userRouter.post('/signup' , async(req,res)=>{
     let {username , password} = req.body;

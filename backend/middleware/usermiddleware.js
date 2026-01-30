@@ -1,6 +1,6 @@
 
 const jwt = require('jsonwebtoken');
-const jwtsecret = process.env.JWTSECRET;
+const jwtsecret = "jwtsecret";
 
 const usermiddleware = async(req,res,next)=>{
     try{
