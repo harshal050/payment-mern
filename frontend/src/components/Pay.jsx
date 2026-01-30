@@ -107,7 +107,7 @@ export default function Pay({balance,setbalance}) {
 
         {/* User List */}
         <div className="mt-6 space-y-3">
-          {users?.map((user, ind) => (
+          {users && users?.map((user, ind) => (
             <div
               key={ind}
               onClick={() => setSelectedUser(user)}

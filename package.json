@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "dev": "concurrently \"npm start --prefix backend\" \"npm start --prefix frontend\""
+    "dev": "concurrently \"npm run dev --prefix backend\" \"npm start --prefix frontend\""
   },
   "repository": {
     "type": "git",

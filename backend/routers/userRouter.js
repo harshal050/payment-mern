@@ -1,13 +1,13 @@
+require('dotenv').config();
 const express = require('express');
+const {usermiddleware} = require('../middleware/usermiddleware');
 const userRouter = express.Router();
 const {User,Transactions,mongoose} = require('../db/db');
-const {usermiddleware} = require('../middleware/usermiddleware');
 const jwt = require('jsonwebtoken');
-const jwtsecret = "jwtsecret";
+const jwtsecret = process.env.JWTSECRET;
 
 userRouter.post('/signup' , async(req,res)=>{
     let {username , password} = req.body;
-    
     try{
         const data = await User.find({username});
         if(data.length==0) throw new Error();
@@ -35,14 +35,11 @@ userRouter.post('/signup' , async(req,res)=>{
 
 userRouter.post('/signin', async(req,res)=>{
     let {username , password} = req.body;
-    // console.log(req.body)
     try{
         const data = await User.findOne({username , password});
         if(data==null) throw new Error();
         else{
             const token = jwt.sign(username,jwtsecret);
-            // console.log("data signin"+data)
-            // res.setHeader('Authorization' , token);
             res.status(200).json({
                 message : "signin successfully..",
                 success : true,
@@ -60,9 +57,7 @@ userRouter.post('/signin', async(req,res)=>{
 userRouter.get('/', usermiddleware , async(req,res)=>{
     try{
         const username = req.username;
-        // console.log("username "+username)
         const data = await User.findOne({username});
-        // console.log("data "+JSON.stringify(data))
         res.status(200).json(data);
     }catch(e){
         res.status(500).json({
@@ -91,7 +86,6 @@ userRouter.get('/all', usermiddleware , async(req,res)=>{
 
 userRouter.post('/tranc', usermiddleware , async(req,res)=>{
     const {to,money} = req.body;
-    // console.log(to,money)
     const from = req.username
 
     const data = await User.find({username:from});
@@ -130,7 +124,6 @@ userRouter.get('/tranc/all', usermiddleware , async(req,res)=>{
         const data1 = await Transactions.find({from});
         const data2 = await Transactions.find({to:from});
         let data = [...data1,...data2];
-        // console.log("data of arr "+data)
         data.sort((a,b)=> new Date(b.createdAt) - new Date(a.createdAt));
         res.status(200).json({data,username:from});
     }catch(e){

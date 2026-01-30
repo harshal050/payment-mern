@@ -1,11 +1,11 @@
+require('dotenv').config();
 const jwt = require('jsonwebtoken');
-const jwtsecret = "jwtsecret";
+const jwtsecret = process.env.JWTSECRET;
 
 const usermiddleware = async(req,res,next)=>{
     try{
         const token = req.header('authorization');
         const data = jwt.verify(token,jwtsecret);
-        // console.log("data "+data);
         req.username = data;
         next();
     }catch(e){
