@@ -5,6 +5,9 @@ import Pay from "./Pay";
 import RecentTransactions from "./RecentTransactions";
 import { useNavigate } from 'react-router-dom';
 import AutoPopup from "./AutoPopup";
+const {BASE_PATH} = require('../lib/lib')
+
+
 
 export default function Dashboard({ isSignin, setisSignin }) {
     const [name, setName] = useState();
@@ -16,7 +19,7 @@ export default function Dashboard({ isSignin, setisSignin }) {
     useEffect(() => {
         async function call() {
             try {
-                const res = await fetch('api/user/', {
+                const res = await fetch(`${BASE_PATH}/api/user/`, {
                     method: 'GET',
                     headers: {
                         'Content-Type': 'application/json',

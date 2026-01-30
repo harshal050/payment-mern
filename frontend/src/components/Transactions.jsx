@@ -2,6 +2,7 @@
 import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom';
 import AutoPopup from "./AutoPopup";
+const {BASE_PATH} = require('../lib/lib')
 
 export default function Transactions({ isSignin }) {
   const [transactions, settransactions] = useState([]);
@@ -15,7 +16,7 @@ export default function Transactions({ isSignin }) {
     }
     async function call() {
       try {
-        const res = await fetch('api/user/tranc/all', {
+        const res = await fetch(`${BASE_PATH}/api/user/tranc/all`, {
           method: 'GET',
           headers: {
             'Content-Type': 'application/json',

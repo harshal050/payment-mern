@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { NavLink } from "react-router-dom";
 import AutoPopup from "./AutoPopup";
+const {BASE_PATH} = require('../lib/lib')
 
 export default function RecentTransactions({balance}) {
 
@@ -13,7 +14,7 @@ export default function RecentTransactions({balance}) {
 
       try {
 
-        const res = await fetch('api/user/tranc/all', {
+        const res = await fetch(`${BASE_PATH}/api/user/tranc/all`, {
           method: 'GET',
           headers: {
             'Content-Type': 'application/json',

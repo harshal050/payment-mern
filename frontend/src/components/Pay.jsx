@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import AutoPopup from "./AutoPopup";
+const {BASE_PATH} = require('../lib/lib')
 
 export default function Pay({balance,setbalance}) {
   const [amount, setAmount] = useState("");
@@ -11,7 +12,7 @@ export default function Pay({balance,setbalance}) {
   useEffect(() => {
     async function call() {
       try {
-        const res = await fetch('api/user/all', {
+        const res = await fetch(`${BASE_PATH}/api/user/all`, {
           method: 'GET',
           headers: {
             'Content-Type': 'application/json',
@@ -31,7 +32,7 @@ export default function Pay({balance,setbalance}) {
   const handlePay = async () => {
     setLoading(true);
     try {
-      const res = await fetch('api/user/tranc', {
+      const res = await fetch(`${BASE_PATH}/api/user/tranc`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

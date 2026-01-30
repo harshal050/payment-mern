@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import AutoPopup from "./AutoPopup";
+const {BASE_PATH} = require('../lib/lib')
 
 // components/Signup.jsx
 export default function Signup() {
@@ -13,7 +14,7 @@ export default function Signup() {
   async function SignupHandler() {
     try {
       setloading(true);
-      const res = await fetch('api/user/signup', {
+      const res = await fetch(`${BASE_PATH}/api/user/signup`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'

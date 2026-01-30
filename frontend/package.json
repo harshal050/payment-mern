@@ -7,6 +7,7 @@
     "@testing-library/jest-dom": "^6.9.1",
     "@testing-library/react": "^16.3.2",
     "@testing-library/user-event": "^13.5.0",
+    "dotenv": "^17.2.3",
     "react": "^19.2.4",
     "react-dom": "^19.2.4",
     "react-router-dom": "^7.13.0",
@@ -14,7 +15,6 @@
     "web-vitals": "^2.1.4",
     "zod": "^4.3.6"
   },
-  "proxy": "https://payment-mern-backend.vercel.app/",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",

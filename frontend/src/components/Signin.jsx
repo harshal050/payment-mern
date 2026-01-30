@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import AutoPopup from "./AutoPopup";
+const {BASE_PATH} = require('../lib/lib')
 
 // components/Signin.jsx
 export default function Signin({ setisSignin }) {
@@ -14,7 +15,7 @@ export default function Signin({ setisSignin }) {
     setloading(true);
 
     try {
-      const res = await fetch('api/user/signin', {
+      const res = await fetch(`${BASE_PATH}/api/user/signin`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -41,6 +42,7 @@ export default function Signin({ setisSignin }) {
     <div className="min-h-screen flex items-center justify-center bg-gray-100">
       <div className="bg-white p-8 rounded-xl shadow-lg w-full max-w-md">
         <h2 className="text-2xl font-bold text-center mb-6">Welcome Back</h2>
+        <h1>env {BASE_PATH}</h1>
 
         <input
           type="email"

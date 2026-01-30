@@ -30,7 +30,7 @@ async function ipmiddleware(req, res, next) {
             next();
         }
     } finally {
-        // console.log("global.RequestCnt " + global.RequestCnt);
+        console.log("global.RequestCnt " + global.RequestCnt);
     }
 }
 
