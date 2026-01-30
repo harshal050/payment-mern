@@ -1,5 +1,7 @@
+if (process.env.NODE_ENV === 'development') {
+  require('dotenv').config();
+}
 const mongoose = require('mongoose');
-require('dotenv').config()
 const url = process.env.MONGOURL;
 
 mongoose.connect(url)

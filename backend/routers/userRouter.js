@@ -1,4 +1,6 @@
-require('dotenv').config();
+if (process.env.NODE_ENV === 'development') {
+  require('dotenv').config();
+}
 const express = require('express');
 const {usermiddleware} = require('../middleware/usermiddleware');
 const userRouter = express.Router();

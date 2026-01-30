@@ -1,4 +1,6 @@
-require('dotenv').config();
+if (process.env.NODE_ENV === 'development') {
+  require('dotenv').config();
+}
 const express = require('express');
 const app = express();
 const {userRouter} = require('./routers/userRouter');
@@ -23,10 +25,9 @@ app.use(ipmiddleware);
 app.use('/api/user',userRouter);
 app.use('/api/ip', ipRouter);
 
-if(process.env.NODE_ENV !== "production"){
-    app.listen(PORT,()=>{
-        console.log("server is listen on port "+PORT);
-    })
-}
+app.listen(PORT,()=>{
+    console.log("server is listen on port "+PORT);
+})
+
 
 module.exports = app;
