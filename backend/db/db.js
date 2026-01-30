@@ -1,6 +1,3 @@
-if (process.env.NODE_ENV === 'development') {
-  require('dotenv').config();
-}
 const mongoose = require('mongoose');
 const url = process.env.MONGOURL;
 
