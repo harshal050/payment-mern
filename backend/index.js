@@ -5,7 +5,7 @@ const {userRouter} = require('./routers/userRouter');
 const {ipRouter} = require('./routers/ipRouter');
 const {ipmiddleware} = require('./middleware/ipmiddleware')
 const cors = require('cors');
-const PORT = 3001;
+const PORT = 80;
 
 if (typeof global.RequestCnt === 'undefined') {
   global.RequestCnt = 0;
